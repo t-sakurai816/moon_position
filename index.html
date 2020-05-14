@@ -5,9 +5,12 @@
   <meta charset="utf-8">
   <title>月の方角を表す</title>
   <script type="text/javascript" src="./suncalc.js"></script>
+
 </head>
 
 <body>
+
+
 
   <h1>テスト</h1>
   <label>現時刻 : </label>
@@ -38,6 +41,30 @@
     }
   </script>
 
+  <script>
+    // 現在地取得処理
+    function getPosition() {
+      // 現在地を取得
+      navigator.geolocation.getCurrentPosition(
+        // 取得成功した場合
+        function(position) {
+          var str_latitude = position.coords.latitude;
+          var latitude = Number(str_latitude);
+
+          document.write(latitude);
+
+          var str_longitude = position.coords.longitude;
+          var longitude = Number(str_longitude);
+          // alert("緯度:"+position.coords.latitude+",経度"+position.coords.longitude);
+        },
+        );
+      }
+  </script>
+
+  <script type="text/javascript">
+    getPosition()
+  </script>
+
   <br>
 
   <label>日の入り : </label>
@@ -47,7 +74,19 @@
     // 第一引数 : 日付
     // 第二引数 : 緯度
     // 第三引数 : 経度
-    var times = SunCalc.getTimes(new Date(), 35.6275256, 139.7714723);
+
+
+
+    // var str_latitude = position.coords.latitude;
+    // var latitude = Number(str_latitude);
+    //
+    // var str_longitude = position.coords.longitude;
+    // var longitude = Number(str_longitude);
+
+    var num1 = 35.6275256;
+    var num2 = 139.7714723;
+
+    var times = SunCalc.getTimes(new Date(), num1, num2);
     document.write(times.sunset.getHours() + ":" + times.sunset.getMinutes());
   </script>
 
@@ -81,31 +120,13 @@
     document.write(direction);
   </script>
 
-  <script>
-    function test() {
-      navigator.geolocation.getCurrentPosition(test2);
-    }
+  <br>
 
-    function test2(position) {
+  <button onclick="getPosition();">位置情報を取得する</button>
 
-      var geo_text = "緯度:" + position.coords.latitude + "\n";
-      geo_text += "経度:" + position.coords.longitude + "\n";
-      geo_text += "高度:" + position.coords.altitude + "\n";
-      geo_text += "位置精度:" + position.coords.accuracy + "\n";
-      geo_text += "高度精度:" + position.coords.altitudeAccuracy + "\n";
-      geo_text += "移動方向:" + position.coords.heading + "\n";
-      geo_text += "速度:" + position.coords.speed + "\n";
-
-      var date = new Date(position.timestamp);
-
-      geo_text += "取得時刻:" + date.toLocaleString() + "\n";
-
-      alert(geo_text);
-
-    }
-  </script>
+  <br>
 
 
-  </body>
+</body>
 
 </html>
