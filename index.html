@@ -5,16 +5,20 @@
   <meta charset="utf-8">
   <title>月の方角を表す</title>
   <script type="text/javascript" src="./suncalc.js"></script>
+
 </head>
 
 <body>
+
+
 
   <h1>テスト</h1>
   <label>現時刻 : </label>
 
   <span id="view_clock"></span>
 
-  <script type="text/javascript"> //現時刻を表すスクリプト
+  <script type="text/javascript">
+    //現時刻を表すスクリプト
     timerID = setInterval('clock()', 500); //0.5秒毎にclock()を実行
 
     function clock() {
@@ -37,15 +41,52 @@
     }
   </script>
 
+  <script>
+    // 現在地取得処理
+    function getPosition() {
+      // 現在地を取得
+      navigator.geolocation.getCurrentPosition(
+        // 取得成功した場合
+        function(position) {
+          var str_latitude = position.coords.latitude;
+          var latitude = Number(str_latitude);
+
+          document.write(latitude);
+
+          var str_longitude = position.coords.longitude;
+          var longitude = Number(str_longitude);
+          // alert("緯度:"+position.coords.latitude+",経度"+position.coords.longitude);
+        },
+        );
+      }
+  </script>
+
+  <script type="text/javascript">
+    getPosition()
+  </script>
+
   <br>
 
   <label>日の入り : </label>
 
-  <script type="text/javascript">  //日の入り
+  <script type="text/javascript">
+    //日の入り
     // 第一引数 : 日付
     // 第二引数 : 緯度
     // 第三引数 : 経度
-    var times = SunCalc.getTimes(new Date(), 35.6275256, 139.7714723);
+
+
+
+    // var str_latitude = position.coords.latitude;
+    // var latitude = Number(str_latitude);
+    //
+    // var str_longitude = position.coords.longitude;
+    // var longitude = Number(str_longitude);
+
+    var num1 = 35.6275256;
+    var num2 = 139.7714723;
+
+    var times = SunCalc.getTimes(new Date(), num1, num2);
     document.write(times.sunset.getHours() + ":" + times.sunset.getMinutes());
   </script>
 
@@ -66,9 +107,8 @@
   <label>角度 : </label>
 
   <script type="text/javascript">
-    var degree = moon_position.azimuth * ( 180 / Math.PI );
+    var degree = moon_position.azimuth * (180 / Math.PI);
     document.write(degree);
-
   </script>
 
   <br>
@@ -78,9 +118,13 @@
   <script type="text/javascript">
     var direction = 180 + degree;
     document.write(direction);
-
   </script>
 
+  <br>
+
+  <button onclick="getPosition();">位置情報を取得する</button>
+
+  <br>
 
 
 </body>
