@@ -5,6 +5,32 @@
   <meta charset="utf-8">
   <title>月の方角を表す</title>
   <script type="text/javascript" src="./suncalc.js"></script>
+  <script>
+    // 現在地取得処理
+    function getPosition() {
+      // 現在地を取得
+      navigator.geolocation.getCurrentPosition(
+        // 取得成功した場合
+        function(position) {
+          var latitude = position.coords.latitude; //緯度を代入
+          var longitude = position.coords.longitude;  //経度を代入
+
+          alert("緯度:"+position.coords.latitude+",経度"+position.coords.longitude);
+
+          // 日の入り
+          var times = SunCalc.getTimes(new Date(), latitude, longitude);
+          document.write("日の入り : " + times.sunset.getHours() + ":" + times.sunset.getMinutes());
+
+
+
+          // ラジアン
+          var moon_position_rad = SunCalc.getMoonPosition(new Date(), latitude, longitude);
+          document.writeln(moon_position_rad.azimuth);
+
+        },
+        );
+      }
+  </script>
 </head>
 
 <body>
@@ -40,7 +66,6 @@
   <br>
 
   <label>日の入り : </label>
-
   <script type="text/javascript">  //日の入り
     // 第一引数 : 日付
     // 第二引数 : 緯度
@@ -52,7 +77,6 @@
   <br>
 
   <label>ラジアン : </label>
-
   <script type="text/javascript">
     // 第一引数 : 日付
     // 第二引数 : 緯度
@@ -64,24 +88,28 @@
   <br>
 
   <label>角度 : </label>
-
   <script type="text/javascript">
     var degree = moon_position.azimuth * ( 180 / Math.PI );
     document.write(degree);
-
   </script>
 
   <br>
 
   <label>方角 : </label>
-
   <script type="text/javascript">
     var direction = 180 + degree;
     document.write(direction);
-
   </script>
 
+  <br>
 
+  <button onclick="getPosition();">位置情報を取得する</button>
+
+
+  <script type="text/javascript">
+    document.writeln("hoge4");
+    document.writeln("hoge5");
+  </script>
 
 </body>
 
