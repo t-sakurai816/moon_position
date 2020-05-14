@@ -1,10 +1,88 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>月の方角を表す</title>
-  </head>
-  <body>
 
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>月の方角を表す</title>
+  <script type="text/javascript" src="./suncalc.js"></script>
+</head>
+
+<body>
+
+  <h1>テスト</h1>
+  <label>現時刻 : </label>
+
+  <span id="view_clock"></span>
+
+  <script type="text/javascript"> //現時刻を表すスクリプト
+    timerID = setInterval('clock()', 500); //0.5秒毎にclock()を実行
+
+    function clock() {
+      document.getElementById("view_clock").innerHTML = getNow();
+    }
+
+    function getNow() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var mon = now.getMonth() + 1; //１を足すこと
+      var day = now.getDate();
+      var hour = now.getHours();
+      var min = now.getMinutes();
+      var sec = now.getSeconds();
+
+      //出力用
+      var s = year + "年" + mon + "月" + day + "日" + hour + "時" + min + "分" + sec + "秒";
+
+      return s;
+    }
+  </script>
+
+  <br>
+
+  <label>日の入り : </label>
+
+  <script type="text/javascript">  //日の入り
+    // 第一引数 : 日付
+    // 第二引数 : 緯度
+    // 第三引数 : 経度
+    var times = SunCalc.getTimes(new Date(), 35.6275256, 139.7714723);
+    document.write(times.sunset.getHours() + ":" + times.sunset.getMinutes());
+  </script>
+
+  <br>
+
+  <label>ラジアン : </label>
+
+  <script type="text/javascript">
+    // 第一引数 : 日付
+    // 第二引数 : 緯度
+    // 第三引数 : 経度
+    var moon_position = SunCalc.getMoonPosition(new Date(), 35.6275256, 139.7714723);
+    document.write(moon_position.azimuth);
+  </script>
+
+  <br>
+
+  <label>角度 : </label>
+
+  <script type="text/javascript">
+    var degree = moon_position.azimuth * ( 180 / Math.PI );
+    document.write(degree);
+
+  </script>
+
+  <br>
+
+  <label>方角 : </label>
+
+  <script type="text/javascript">
+    var direction = 180 + degree;
+    document.write(direction);
+
+  </script>
+
+
+
+</body>
+
 </html>
