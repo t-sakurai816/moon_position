@@ -15,7 +15,10 @@
   <h1>現在地から月の方向がわかーるテスト</h1>
   <p>テストしてくれると非常にありがたいです。<br>
     文字が見づらくてごめんなさい。ほんとにさっき作ったばかりなんです。</p>
+  <p>位置情報を送信したり、製作者が位置情報を取得することはありません。</p>
+  <p>月のイラストはだいたいの目安としてご覧ください。</p>
   <p>↓のボタンを押すと位置情報を取得して、月の位置を表示してくれます</p>
+
 
   <!-- 現時刻を表示するスクリプト -->
   <script type="text/javascript">
@@ -75,24 +78,55 @@
           document.getElementById("now_degree").innerHTML = degree;
 
           // 方角
-          if (degree < 0){//もし角度がマイナスなら
-            var direction = 180 + degree;
-            document.getElementById("now_direction").innerHTML = direction;
-          } else{//プラスなら
-            var direction = degree;
-            document.getElementById("now_direction").innerHTML = direction;
-          }
+          var direction = 180 + degree;
+          document.getElementById("now_direction").innerHTML = direction;
 
           //月の満ち欠け
           var illumination = SunCalc.getMoonIllumination(new Date())
           var tmp_illumination = illumination.phase;
+          // var tmp_illumination = 0.241;
           document.getElementById("now_illumination").innerHTML = tmp_illumination;
 
 
           // 月の画像を表示
           var img = document.getElementById("img_place");
-          img.src = "./img/moon_michikake04.png";
-          // '<img src="./img/moon_michikake04.png" width="104" height="91" />'
+          if(tmp_illumination > 0.875 && tmp_illumination < 1){
+            img.src = "./img/moon_michikake06.png";
+          }
+          else if(tmp_illumination > 0.76 && tmp_illumination < 0.875){
+            img.src = "./img/moon_michikake05.png";
+          }
+          if(tmp_illumination > 0.74 && tmp_illumination < 0.76){//下弦の月
+            img.src = "./img/moon_michikake04.png";
+          }
+          else if(tmp_illumination >= 0.625 && tmp_illumination < 0.74){
+            img.src = "./img/moon_michikake03.png";
+          }
+          else if(tmp_illumination >= 0.51 && tmp_illumination < 0.625){
+            img.src = "./img/moon_michikake02.png";
+          }
+          else if(tmp_illumination >= 0.49 && tmp_illumination < 0.51){//満月だったら
+            img.src = "./img/moon_michikake01.png";
+          }
+          else if(tmp_illumination >= 0.375 && tmp_illumination < 0.49){
+            img.src = "./img/moon_michikake12.png";
+          }
+          else if(tmp_illumination >= 0.26 && tmp_illumination < 0.375){
+            img.src = "./img/moon_michikake11.png";
+          }
+          else if(tmp_illumination >= 0.24 && tmp_illumination < 0.26){//上限の月
+            img.src = "./img/moon_michikake10.png";
+          }
+          else if(tmp_illumination >= 0.16 && tmp_illumination < 0.24){
+            img.src = "./img/moon_michikake09.png";
+          }
+          else if(tmp_illumination >= 0.08 && tmp_illumination < 0.16){
+            img.src = "./img/moon_michikake08.png";
+          }
+          else if(tmp_illumination >= 0 && tmp_illumination < 0.08) {//新月
+            img.src = "./img/moon_michikake07.png";
+          }
+
         },
       );
     }
