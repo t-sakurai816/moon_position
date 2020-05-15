@@ -83,6 +83,16 @@
             document.getElementById("now_direction").innerHTML = direction;
           }
 
+          //月の満ち欠け
+          var illumination = SunCalc.getMoonIllumination(new Date())
+          var tmp_illumination = illumination.phase;
+          document.getElementById("now_illumination").innerHTML = tmp_illumination;
+
+
+          // 月の画像を表示
+          var img = document.getElementById("img_place");
+          img.src = "./img/moon_michikake04.png";
+          // '<img src="./img/moon_michikake04.png" width="104" height="91" />'
         },
       );
     }
@@ -132,6 +142,17 @@
   <label>現在の月までの方角 : </label>
   <span id = "now_direction"></span>
 
+  <br>
+
+  <!-- 満ち欠けを表示 -->
+  <label>現在の月の満ち欠け : </label>
+  <span id = "now_illumination"></span>
+  <br>
+  <img id = "img_place" src = "./koda.jpg" width = "104"/>
+  <!-- <img src="./img/moon_michikake04.png" alt="海の写真" title="空と海"> -->
+  <!-- <script type="text/javascript">
+    document.write('<img src="./img/moon_michikake04.png" width="104" height="91" />');
+  </script> -->
 
 
 </body>
