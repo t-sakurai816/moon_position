@@ -172,7 +172,7 @@
 
 
           // ラジアン
-          var moon_position_rad = SunCalc.getMoonPosition(new Date(str_userSelect), latitude, longitude);
+          var moon_position_rad = SunCalc.getMoonPosition(new Date(str_userSelect.replace(/-/g,"/")), latitude, longitude);
           var tmp_moon_position_rad = moon_position_rad.azimuth;
           document.getElementById("now_moon_position_rad").innerHTML = tmp_moon_position_rad;
 
