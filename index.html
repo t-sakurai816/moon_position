@@ -163,7 +163,7 @@
 
           //ユーザーが入力した日付と時間を代入 Date関数で使えるようにする。
           var userSelect = userDate + empty + userTime;
-          Number userSelect;
+          var str_userSelect = String(userSelect);
 
           //日の入り
           var sunny_in = SunCalc.getTimes(new Date(userDate), latitude, longitude);
@@ -172,7 +172,7 @@
 
 
           // ラジアン
-          var moon_position_rad = SunCalc.getMoonPosition(new Date(userSelect), latitude, longitude);
+          var moon_position_rad = SunCalc.getMoonPosition(new Date(str_userSelect), latitude, longitude);
           var tmp_moon_position_rad = moon_position_rad.azimuth;
           document.getElementById("now_moon_position_rad").innerHTML = tmp_moon_position_rad;
 
