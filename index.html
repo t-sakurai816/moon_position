@@ -4,71 +4,16 @@
 <head>
   <meta charset="utf-8">
   <title>月の方角を表す</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- JavaScript -->
   <script type="text/javascript" src="./suncalc.js"></script>
-
-</head>
-
-<body>
-
-  <h1>現在地から月の方向がわかーるテスト</h1>
-  <p>テストしてくれると非常にありがたいです。<br>
-    文字が見づらくてごめんなさい。ほんとにさっき作ったばかりなんです。</p>
-  <p>位置情報を送信したり、製作者が位置情報を取得することはありません。</p>
-  <p>月のイラストはだいたいの目安としてご覧ください。</p>
-  <p>↓のボタンを押すと位置情報を取得して、月の位置を表示してくれます</p>
-
-
-  <button onclick="getPosition();">位置情報を取得する</button>
-
-  <br>
-  <br>
-
-  <label>現時刻 : </label>
-  <span id="view_clock"></span>
-
-  <br>
-
-  <!--緯度を表示-->
-  <label>現在地の緯度 : </label>
-  <span id="now_latiude"></span>
-
-  <br>
-
-  <!-- 経度を表示 -->
-  <label>現在地の経度 : </label>
-  <span id = "now_longitude"></span>
-
-  <br>
-
-  <!-- 日の入りを表示 -->
-  <label>現在の日の入り : </label>
-  <span id = "now_sunny_in"></span>
-
-  <br>
-
-  <!-- ラジアンを表示 -->
-  <label>現在の月までのラジアン : </label>
-  <span id = "now_moon_position_rad"></span>
-
-  <br>
-
-  <!-- 角度を表示 -->
-  <label>現在の角度 : </label>
-  <span id = "now_degree"></span>
-
-  <br>
-
-  <!-- 方角を表示 -->
-  <label>現在の月までの方角 : </label>
-  <span id = "now_direction"></span>
-
-  <br>
-
-  <!-- 満ち欠けを表示 -->
-  <label>現在の月の満ち欠け : </label>
-  <span id = "now_illumination"></span>
-  <br>
-  <img id = "img_place" src = "./koda.jpg" width = "104"/>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
   <!-- 時刻の表示 -->
   <script type="text/javascript">
@@ -95,14 +40,14 @@
     }
   </script>
 
-  <!-- 月の位置とかのスクリプト -->
+  <!-- 位置情報から月の位置とかのスクリプト -->
   <script>
     // 現在地取得処理
     function getPosition() {
       // 現在地を取得
       navigator.geolocation.getCurrentPosition(
         // 取得成功した場合
-        function (position) {
+        function(position) {
 
           //緯度を取得
           var latitude = position.coords.latitude;
@@ -140,47 +85,274 @@
 
           // 月の画像を表示 if地獄を直したい
           var img = document.getElementById("img_place");
-          if(tmp_illumination > 0.875 && tmp_illumination < 1){
+          if (tmp_illumination > 0.875 && tmp_illumination < 1) {
             img.src = "./img/moon_michikake06.png";
-          }
-          else if(tmp_illumination > 0.76 && tmp_illumination < 0.875){
+          } else if (tmp_illumination > 0.76 && tmp_illumination < 0.875) {
             img.src = "./img/moon_michikake05.png";
           }
-          if(tmp_illumination > 0.74 && tmp_illumination < 0.76){//下弦の月
+          if (tmp_illumination > 0.74 && tmp_illumination < 0.76) { //下弦の月
             img.src = "./img/moon_michikake04.png";
-          }
-          else if(tmp_illumination >= 0.625 && tmp_illumination < 0.74){
+          } else if (tmp_illumination >= 0.625 && tmp_illumination < 0.74) {
             img.src = "./img/moon_michikake03.png";
-          }
-          else if(tmp_illumination >= 0.51 && tmp_illumination < 0.625){
+          } else if (tmp_illumination >= 0.51 && tmp_illumination < 0.625) {
             img.src = "./img/moon_michikake02.png";
-          }
-          else if(tmp_illumination >= 0.49 && tmp_illumination < 0.51){//満月だったら
+          } else if (tmp_illumination >= 0.49 && tmp_illumination < 0.51) { //満月だったら
             img.src = "./img/moon_michikake01.png";
-          }
-          else if(tmp_illumination >= 0.375 && tmp_illumination < 0.49){
+          } else if (tmp_illumination >= 0.375 && tmp_illumination < 0.49) {
             img.src = "./img/moon_michikake12.png";
-          }
-          else if(tmp_illumination >= 0.26 && tmp_illumination < 0.375){
+          } else if (tmp_illumination >= 0.26 && tmp_illumination < 0.375) {
             img.src = "./img/moon_michikake11.png";
-          }
-          else if(tmp_illumination >= 0.24 && tmp_illumination < 0.26){//上限の月
+          } else if (tmp_illumination >= 0.24 && tmp_illumination < 0.26) { //上限の月
             img.src = "./img/moon_michikake10.png";
-          }
-          else if(tmp_illumination >= 0.16 && tmp_illumination < 0.24){
+          } else if (tmp_illumination >= 0.16 && tmp_illumination < 0.24) {
             img.src = "./img/moon_michikake09.png";
-          }
-          else if(tmp_illumination >= 0.08 && tmp_illumination < 0.16){
+          } else if (tmp_illumination >= 0.08 && tmp_illumination < 0.16) {
             img.src = "./img/moon_michikake08.png";
-          }
-          else if(tmp_illumination >= 0 && tmp_illumination < 0.08) {//新月
+          } else if (tmp_illumination >= 0 && tmp_illumination < 0.08) { //新月
             img.src = "./img/moon_michikake07.png";
           }
 
         },
+        // 取得失敗した場合
+        function(error) {
+          switch (error.code) {
+            case 1: //PERMISSION_DENIED
+              alert("位置情報の利用が許可されていません");
+              break;
+            case 2: //POSITION_UNAVAILABLE
+              alert("現在位置が取得できませんでした");
+              break;
+            case 3: //TIMEOUT
+              alert("タイムアウトになりました");
+              break;
+            default:
+              alert("その他のエラー(エラーコード:" + error.code + ")");
+              break;
+          }
+        }
       );
     }
   </script>
+
+  <!-- ユーザーの入力でやる -->
+  <script>
+    // 現在地取得処理
+    function anyPosition() {
+      // 現在地を取得
+      navigator.geolocation.getCurrentPosition(
+        // 取得成功した場合
+        function(position) {
+
+          //緯度を取得
+          var latitude = position.coords.latitude;
+          document.getElementById("now_latiude").innerHTML = latitude;
+
+          // 経度を取得
+          var longitude = position.coords.longitude;
+          document.getElementById("now_longitude").innerHTML = longitude;
+
+          // 日付を取得
+          var userDate = document.form1.text1.value;
+          document.getElementById("span1").textContent = userDate;
+
+          //時間を取得
+          var userTime = document.form1.text2.value;
+          document.getElementById("span2").textContent = userTime;
+
+          //ユーザーが入力した日付と時間を代入 Date関数で使えるようにする。
+          var userSelect = userDate + " " + userTime;
+
+          //日の入り
+          var sunny_in = SunCalc.getTimes(new Date(userSelect), latitude, longitude);
+          var tmp_sunny_in = sunny_in.sunset.getHours() + ":" + sunny_in.sunset.getMinutes();
+          document.getElementById("now_sunny_in").innerHTML = tmp_sunny_in;
+
+
+          // ラジアン
+          var moon_position_rad = SunCalc.getMoonPosition(new Date(userSelect), latitude, longitude);
+          var tmp_moon_position_rad = moon_position_rad.azimuth;
+          document.getElementById("now_moon_position_rad").innerHTML = tmp_moon_position_rad;
+
+          // 角度
+          var degree = moon_position_rad.azimuth * (180 / Math.PI);
+          document.getElementById("now_degree").innerHTML = degree;
+
+          // 方角
+          var direction = 180 + degree;
+          document.getElementById("now_direction").innerHTML = direction;
+
+          //月の満ち欠け
+          var illumination = SunCalc.getMoonIllumination(new Date(userSelect))
+          var tmp_illumination = illumination.phase;
+          // var tmp_illumination = 0.241;
+          document.getElementById("now_illumination").innerHTML = tmp_illumination;
+
+
+          // 月の画像を表示 if地獄を直したい
+          var img = document.getElementById("img_place");
+          if (tmp_illumination > 0.875 && tmp_illumination < 1) {
+            img.src = "./img/moon_michikake06.png";
+          } else if (tmp_illumination > 0.76 && tmp_illumination < 0.875) {
+            img.src = "./img/moon_michikake05.png";
+          }
+          if (tmp_illumination > 0.74 && tmp_illumination < 0.76) { //下弦の月
+            img.src = "./img/moon_michikake04.png";
+          } else if (tmp_illumination >= 0.625 && tmp_illumination < 0.74) {
+            img.src = "./img/moon_michikake03.png";
+          } else if (tmp_illumination >= 0.51 && tmp_illumination < 0.625) {
+            img.src = "./img/moon_michikake02.png";
+          } else if (tmp_illumination >= 0.49 && tmp_illumination < 0.51) { //満月だったら
+            img.src = "./img/moon_michikake01.png";
+          } else if (tmp_illumination >= 0.375 && tmp_illumination < 0.49) {
+            img.src = "./img/moon_michikake12.png";
+          } else if (tmp_illumination >= 0.26 && tmp_illumination < 0.375) {
+            img.src = "./img/moon_michikake11.png";
+          } else if (tmp_illumination >= 0.24 && tmp_illumination < 0.26) { //上限の月
+            img.src = "./img/moon_michikake10.png";
+          } else if (tmp_illumination >= 0.16 && tmp_illumination < 0.24) {
+            img.src = "./img/moon_michikake09.png";
+          } else if (tmp_illumination >= 0.08 && tmp_illumination < 0.16) {
+            img.src = "./img/moon_michikake08.png";
+          } else if (tmp_illumination >= 0 && tmp_illumination < 0.08) { //新月
+            img.src = "./img/moon_michikake07.png";
+          }
+
+        },
+        // 取得失敗した場合
+        function(error) {
+          switch (error.code) {
+            case 1: //PERMISSION_DENIED
+              alert("位置情報の利用が許可されていません");
+              break;
+            case 2: //POSITION_UNAVAILABLE
+              alert("現在位置が取得できませんでした");
+              break;
+            case 3: //TIMEOUT
+              alert("タイムアウトになりました");
+              break;
+            default:
+              alert("その他のエラー(エラーコード:" + error.code + ")");
+              break;
+          }
+        }
+      );
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <h1 class="text-center">現在地から月の方向がわかーるテスト</h1>
+
+
+    <p>テストしてくれると非常にありがたいです。<br>
+      文字が見づらくてごめんなさい。ほんとにさっき作ったばかりなんです。</p>
+    <p>位置情報を送信したり、製作者が位置情報を取得することはありません。</p>
+    <p>月のイラストはだいたいの目安としてご覧ください。</p>
+    <p>↓のボタンを押すと位置情報を取得して、月の位置を表示してくれます</p>
+
+
+    <button type="button" class="btn btn-primary btn-lg active" onclick="getPosition();">位置情報を取得する</button>
+
+    <br>
+    <br>
+
+    <button type="button" class="btn btn-primary btn-lg active" onclick="anyPosition();">自分で指定する</button>
+
+    <br>
+    <br>
+
+<!-- ここからてすと -->
+
+
+    <form name="form1">
+      <input type="date" name="text1" maxlength="5">
+      <input type="time" name="text2" >
+    </form>
+    <!-- <input type="button" value="ボタン1" onclick="clickBtn1()"> -->
+    <input type="button" value="クリア" onclick="clickBtn2()">
+
+    <br>
+    <br>
+
+    <p>取得した日付 : <span id="span1"></span></p>
+    <p>取得した時間 : <span id="span2"></span></p>
+
+
+    <script>
+      function clickBtn1() {
+        // 値を取得
+        var userDate = document.form1.text1.value;
+        document.getElementById("span1").textContent = userDate;
+      }
+
+      function clickBtn2() {
+        document.getElementById("span1").textContent = "";
+      }
+    </script>
+
+<!-- ここまでテスト -->
+
+    <br>
+    <br>
+
+    <label>現時刻 : </label>
+    <span id="view_clock"></span>
+
+    <br>
+
+    <!--緯度を表示-->
+    <label>現在地の緯度 : </label>
+    <span id="now_latiude"></span>
+
+    <br>
+
+    <!-- 経度を表示 -->
+    <label>現在地の経度 : </label>
+    <span id="now_longitude"></span>
+
+    <br>
+
+    <!-- 日の入りを表示 -->
+    <label>現在の日の入り : </label>
+    <span id="now_sunny_in"></span>
+
+    <br>
+
+    <!-- ラジアンを表示 -->
+    <label>現在の月までのラジアン : </label>
+    <span id="now_moon_position_rad"></span>
+
+    <br>
+
+    <!-- 角度を表示 -->
+    <label>現在の角度 : </label>
+    <span id="now_degree"></span>
+
+    <br>
+
+    <!-- 方角を表示 -->
+    <label>現在の月までの方角 : </label>
+    <span id="now_direction"></span>
+
+    <br>
+
+    <!-- 満ち欠けを表示 -->
+    <label>現在の月の満ち欠け : </label>
+    <span id="now_illumination"></span>
+    <br>
+    <img id="img_place" src="./koda.jpg" width="104" />
+
+    <br>
+
+  </div>
+
+
+
+
+
 
 </body>
 
