@@ -152,11 +152,11 @@
           document.getElementById("now_longitude").innerHTML = longitude;
 
           // 日付を取得
-          var userDate = document.dateTime-form.dateInput.value;
+          var userDate = document.dateTimeForm.dateInput.value;
           document.getElementById("span1").textContent = userDate;
 
           //時間を取得
-          var userTime = document.dateTime-form.timeInput.value;
+          var userTime = document.dateTimeForm.timeInput.value;
           document.getElementById("span2").textContent = userTime;
 
           //ユーザーが入力した日付と時間を代入 Date関数で使えるようにする。
@@ -266,7 +266,7 @@
     <br>
 
 
-    <form name="dateTime-form">
+    <form name="dateTimeForm">
       <input type="date" name="dateInput"><!--日付を入力-->
       <input type="time" name="timeInput" ><!--時間を入力-->
     </form>
