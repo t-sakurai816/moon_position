@@ -159,8 +159,10 @@
           var userTime = document.form1.text2.value;
           document.getElementById("span2").textContent = userTime;
 
+          var empty = " ";
+
           //ユーザーが入力した日付と時間を代入 Date関数で使えるようにする。
-          var userSelect = userDate + " " + userTime;
+          var userSelect = userDate + empty + userTime;
 
           //日の入り
           var sunny_in = SunCalc.getTimes(new Date(userDate), latitude, longitude);
