@@ -163,7 +163,7 @@
           var userSelect = userDate + " " + userTime;
 
           //日の入り
-          var sunny_in = SunCalc.getTimes(new Date(userSelect), latitude, longitude);
+          var sunny_in = SunCalc.getTimes(new Date(userDate), latitude, longitude);
           var tmp_sunny_in = sunny_in.sunset.getHours() + ":" + sunny_in.sunset.getMinutes();
           document.getElementById("now_sunny_in").innerHTML = tmp_sunny_in;
 
