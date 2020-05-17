@@ -1,21 +1,20 @@
 :root {
     --main-text-color-white: #fffafe;
-    --main-text-color: #21070a;
-    --main-line-color: #EA6264;
+
 }
 
 body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    /* background: linear-gradient(-135deg, #F2B9A1, #EA6264); */
-    background: #EEEEEE;
+    background: linear-gradient(-135deg, #F2B9A1, #EA6264);
+    /* background: #EEEEEE; */
     font-family: arial, sans-serif;
     letter-spacing: normal;
 }
 
 .content {
-    background: #EEFFFF;
+    background: #FAFAFA;
     border-radius: 7px;
 }
 
