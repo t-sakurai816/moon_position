@@ -4,12 +4,16 @@
 <head>
   <meta charset="utf-8">
   <title>月の方角を表す</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/index.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
   <!-- JavaScript -->
-  <script type="text/javascript" src="js/suncalc.js"></script><!--月の計算-->
-  <script type="text/javascript" src="js/time.js"></script><!--現時刻の表示-->
+  <script type="text/javascript" src="js/suncalc.js"></script>
+  <!--月の計算-->
+  <script type="text/javascript" src="js/time.js"></script>
+  <!--現時刻の表示-->
   <script type="text/javascript" src="js/getPosition.js"></script><!-- 現時刻の月の位置 -->
   <script type="text/javascript" src="js/anyPosition.js"></script><!-- 任意の月の位置 -->
   <!-- Optional JavaScript -->
@@ -21,123 +25,88 @@
 </head>
 
 <body>
-  <div class="container">
 
-    <br>
+  <main class="mainDiv">
+    <div class="content">
+      <div class="content_head">
+        <header class="title">
+          <h1 class="title_text">月の位置</h1>
+        </header>
+      </div>
 
-    <h1 class="text-center">現在地から月の方向がわかーるテスト</h1>
+      <div class="content_body">
 
-    <br>
+        <p class="clock" id="view_clock"></p>
+        <p>ボタンを押すと位置情報を取得して、月の位置を表示してくれます</p>
 
-    <h2>現時刻 : </h2>
-    <h2 id="view_clock"></h2>
+        <button type="button" class="btn btn-primary btn-lg active" onclick="getPosition();">現時刻で月の位置を出力する</button>
 
-    <p>テストしてくれると非常にありがたいです。<br>
-      文字が見づらくてごめんなさい。ほんとにさっき作ったばかりなんです。</p>
-    <p>位置情報を送信したり、製作者が位置情報を取得することはありません。</p>
-    <p>月のイラストはだいたいの目安としてご覧ください。</p>
-    <p>↓のボタンを押すと位置情報を取得して、現時刻での月の位置を表示してくれます</p>
+        <p class="content_separate">もしくは</p>
 
+        <div class="userInput">
+          <div class="input">
+            <form name="dateTimeForm">
+              <!--日付を入力-->
+              <input type="date" name="dateInput">
+              <!--時間を入力-->
+              <input type="time" name="timeInput">
+            </form>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg active" onclick="anyPosition();">↑の日時で出力</button>
+        </div>
 
-    <button type="button" class="btn btn-primary btn-lg active" onclick="getPosition();">現時刻で月の位置を出力する</button>
+        <div class="moon_img">
+          <img id="img_place" src="./none.png" width="200" />
+        </div>
+        <div class="moon_azimuth"><span id="now_azimuth">方位</span></div>
 
-    <br>
-    <br>
-
-    <br>
-    <br>
-
-
-    <form name="dateTimeForm">
-      <input type="date" name="dateInput"><!--日付を入力-->
-      <input type="time" name="timeInput" ><!--時間を入力-->
-    </form>
-
-    <br>
-
-    <button type="button" class="btn btn-primary btn-lg active" onclick="anyPosition();">↑の日時で出力</button>
-
-
-    <br>
-    <br>
-
-    <!-- 一旦表示しない -->
-
-    <!-- <label>取得した日付 : </label> -->
-    <span id="span1" hidden></span>
-
-    <br>
-
-    <!-- <label>取得した時間 : </label> -->
-    <span id="span2" hidden></span>
-
-    <!-- ここまで -->
-
-    <br>
-    <br>
-    <br>
-
-    <!--緯度を表示-->
-    <label>現在地の緯度 : </label>
-    <span id="now_latiude"></span>
-
-    <br>
-
-    <!-- 経度を表示 -->
-    <label>現在地の経度 : </label>
-    <span id="now_longitude"></span>
-
-    <br>
-
-    <!-- 日の入りを表示 -->
-    <label>現在の日の入り : </label>
-    <span id="now_sunny_in"></span>
-
-
-    <!-- 一旦表示しない。↓ -->
-
-    <!-- <br> -->
-
-    <!-- ラジアンを表示 -->
-    <!-- <label>現在の月までのラジアン : </label> -->
-    <span id="now_moon_position_rad" hidden></span>
-
-    <!-- <br> -->
-
-    <!-- 角度を表示 -->
-    <!-- <label>現在の角度 : </label> -->
-    <span id="now_degree" hidden></span>
-
-    <!-- ここまで↑ -->
-
-    <br>
-
-    <!-- 方角を表示 -->
-    <label>現在の月までの方角 : </label>
-    <span id="now_direction"></span>
-
-    <br>
-
-    <label>方位 : </label>
-    <span id="now_azimuth"></span>
-
-    <br>
-
-    <!-- 満ち欠けを表示 -->
-    <label>現在の月の満ち欠け : </label>
-    <span id="now_illumination" hidden></span><!--この表示は分かりづらいので表示はしない-->
-    <span id="now_illumination_fraction"></span><!--0~1で表す-->
-    <br>
-    <img id="img_place" src="./koda.jpg" width="104" />
-
-    <br>
-
-  </div>
+      </div>
 
 
 
+      <div class="content_foot">
 
+        <hr class="cp_hr02" />
 
+        <div class="details">
+          <h3>詳細</h3>
+          <div>日の入り : <span id="now_sunny_in"></span></div>
+          <div>方角 : <span id="now_direction"></span></div>
+          <div>満ち欠け : <span id="now_illumination_fraction"></span></div>
+        </div>
+
+        <hr class="cp_hr02" />
+
+        <div class="notice">
+          <h3>補足</h3>
+          <p>位置情報を外部に送信したり、製作者が位置情報を取得することはありません。</p>
+          <p>月のイラストはだいたいの目安としてご覧ください。</p>
+          <p>なにかありましたらTwitterへ！ -> @sakupon816</p>
+          <p>メールでもどうぞ -> t.sakurai816@gmail.com</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- いるけどいらない -->
+    <div class="waste">
+      <!-- 日付 -->
+      <span id="span1" hidden></span>
+      <!-- 時間 -->
+      <span id="span2" hidden></span>
+      <!--緯度-->
+      <span id="now_latiude" hidden></span>
+      <!-- 経度 -->
+      <span id="now_longitude" hidden></span>
+      <!-- ラジアン -->
+      <span id="now_moon_position_rad" hidden></span>
+      <!-- ラジアン→角度 -->
+      <span id="now_degree" hidden></span>
+      <!-- 満ち欠け(画像表示用) -->
+      <span id="now_illumination" hidden></span>
+    </div>
+  </main>
 
 </body>
 
