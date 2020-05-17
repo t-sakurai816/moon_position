@@ -27,43 +27,57 @@ function getPosition() {
       var degree = moon_position_rad.azimuth * (180 / Math.PI);
       document.getElementById("now_degree").innerHTML = degree;
 
-      // 方角
+
+
+      // 方角の角度
       var direction = 180 + degree;
       document.getElementById("now_direction").innerHTML = direction;
 
-      //月の満ち欠け
-      var illumination = SunCalc.getMoonIllumination(new Date())
-      var tmp_illumination = illumination.phase;
-      // var tmp_illumination = 0.241;
-      document.getElementById("now_illumination").innerHTML = tmp_illumination;
+
+      //東西南北で
+      var dname = ["北","北北東","北東", "東北東", "東", "東南東", "南東", "南南東", "南", "南南西", "南西", "西南西", "西", "西北西", "北西", "北北西", "北"];
+      var dindex = Math.round(direction / 22.5 )
+      var azimuth = dname[dindex];
+      document.getElementById("now_azimuth").innerHTML = azimuth;
+
+
+      //月の満ち欠け(画像表示用)
+      var illumination_phase = SunCalc.getMoonIllumination(new Date());
+      var tmp_illumination_phase = illumination_phase.phase;
+      // document.getElementById("now_illumination").innerHTML = tmp_illumination_phase;
+
+      // 月の満ち欠け(出力用)
+      var illumination_fraction = SunCalc.getMoonIllumination(new Date());
+      var tmp_illumination_fraction = illumination_fraction.fraction;
+      document.getElementById("now_illumination_fraction").innerHTML = tmp_illumination_fraction;
 
 
       // 月の画像を表示 if地獄を直したい
       var img = document.getElementById("img_place");
-      if (tmp_illumination > 0.875 && tmp_illumination < 1) {
+      if (tmp_illumination_phase > 0.875 && tmp_illumination_phase < 1) {
         img.src = "./img/moon_michikake06.png";
-      } else if (tmp_illumination > 0.76 && tmp_illumination < 0.875) {
+      } else if (tmp_illumination_phase > 0.76 && tmp_illumination_phase < 0.875) {
         img.src = "./img/moon_michikake05.png";
       }
-      if (tmp_illumination > 0.74 && tmp_illumination < 0.76) { //下弦の月
+      if (tmp_illumination_phase > 0.74 && tmp_illumination_phase < 0.76) { //下弦の月
         img.src = "./img/moon_michikake04.png";
-      } else if (tmp_illumination >= 0.625 && tmp_illumination < 0.74) {
+      } else if (tmp_illumination_phase >= 0.625 && tmp_illumination_phase < 0.74) {
         img.src = "./img/moon_michikake03.png";
-      } else if (tmp_illumination >= 0.51 && tmp_illumination < 0.625) {
+      } else if (tmp_illumination_phase >= 0.51 && tmp_illumination_phase < 0.625) {
         img.src = "./img/moon_michikake02.png";
-      } else if (tmp_illumination >= 0.49 && tmp_illumination < 0.51) { //満月だったら
+      } else if (tmp_illumination_phase >= 0.49 && tmp_illumination_phase < 0.51) { //満月だったら
         img.src = "./img/moon_michikake01.png";
-      } else if (tmp_illumination >= 0.375 && tmp_illumination < 0.49) {
+      } else if (tmp_illumination_phase >= 0.375 && tmp_illumination_phase < 0.49) {
         img.src = "./img/moon_michikake12.png";
-      } else if (tmp_illumination >= 0.26 && tmp_illumination < 0.375) {
+      } else if (tmp_illumination_phase >= 0.26 && tmp_illumination_phase < 0.375) {
         img.src = "./img/moon_michikake11.png";
-      } else if (tmp_illumination >= 0.24 && tmp_illumination < 0.26) { //上限の月
+      } else if (tmp_illumination_phase >= 0.24 && tmp_illumination_phase < 0.26) { //上限の月
         img.src = "./img/moon_michikake10.png";
-      } else if (tmp_illumination >= 0.16 && tmp_illumination < 0.24) {
+      } else if (tmp_illumination_phase >= 0.16 && tmp_illumination_phase < 0.24) {
         img.src = "./img/moon_michikake09.png";
-      } else if (tmp_illumination >= 0.08 && tmp_illumination < 0.16) {
+      } else if (tmp_illumination_phase >= 0.08 && tmp_illumination_phase < 0.16) {
         img.src = "./img/moon_michikake08.png";
-      } else if (tmp_illumination >= 0 && tmp_illumination < 0.08) { //新月
+      } else if (tmp_illumination_phase >= 0 && tmp_illumination_phase < 0.08) { //新月
         img.src = "./img/moon_michikake07.png";
       }
 

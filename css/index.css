@@ -1,0 +1,132 @@
+:root {
+    --main-text-color-white: #fffafe;
+    --main-text-color: #21070a;
+    --main-line-color: #EA6264;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    /* background: linear-gradient(-135deg, #F2B9A1, #EA6264); */
+    background: #EEEEEE;
+    font-family: arial, sans-serif;
+    letter-spacing: normal;
+}
+
+.content {
+    background: #EEFFFF;
+    border-radius: 7px;
+}
+
+.content_head {
+    width: 100%;
+    margin-bottom: 23px;
+}
+
+.content_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 70px 30px;
+}
+
+@media screen and (max-width: 600px) {
+    .mainDiv {
+        padding-top: 0;
+    }
+
+    .content_body {
+        padding: 0 10px 30px;
+    }
+}
+
+.mainDiv {
+    display: flex;
+    width: 100vw;
+    padding-top: 100px;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* border-top-left-radius: 7px;
+    border-top-right-radius: 7px; */
+    width: 100%;
+    background-color: #41b5f9;
+}
+
+.title_text {
+    font-weight: normal;
+    font-size: 2rem;
+    white-space: nowrap;
+    color: var(--main-text-color-white);
+}
+
+/* もしくはのところ↓ */
+.content_separate {
+    text-align: center;
+    position: relative;
+    width: 300px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.content_separate:before, .content_separate:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 65px;
+    height: 1px;
+    background-color: black;
+}
+
+.content_separate:before {
+    left: 0;
+}
+
+.content_separate:after {
+    right: 0;
+}
+
+/* ここまで↑ */
+
+
+.userInput{
+  text-align: center;
+}
+
+.input{
+  margin-bottom: 15px;
+}
+
+.moon_img{
+  text-align: center;
+  padding: 0.5em 1em;
+  margin-top: 20px;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+
+.moon_azimuth{
+  font-size: 50px;
+}
+
+
+.content_foot{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.cp_hr02 {
+	border-width: 1px 0 0 0;
+	border-style: dashed;
+	border-color: #BBBBBB;
+}
