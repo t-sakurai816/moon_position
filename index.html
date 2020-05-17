@@ -29,12 +29,11 @@
 </head>
 
 <body>
-
   <main class="mainDiv">
     <div class="content">
       <div class="content_head">
         <header class="title">
-          <h1 class="title_text">月の位置わかーる</h1>
+          <h3 class="title_text">月の位置わかーる</h3>
         </header>
       </div>
 
@@ -66,14 +65,12 @@
 
       </div>
 
-
-
       <div class="content_foot">
 
         <hr class="cp_hr02" />
 
         <div class="details">
-          <h3>詳細</h3>
+          <h4>詳細</h4>
           <div>日の入り : <span id="now_sunny_in"></span></div>
           <div>方角 : <span id="now_direction"></span></div>
           <div>満ち欠け : <span id="now_illumination_fraction"></span></div>
@@ -82,7 +79,7 @@
         <hr class="cp_hr02" />
 
         <div class="notice">
-          <h3>補足</h3>
+          <h4>補足</h4>
           <p>位置情報を外部に送信したり、製作者が位置情報を取得することはありません。</p>
           <p>月のイラストはだいたいの目安としてご覧ください。</p>
           <p>なにかありましたらTwitterへ！ -> @sakupon816</p>
@@ -91,25 +88,27 @@
 
       </div>
 
+      <!-- いるけどいらない -->
+      <div class="waste">
+        <!-- 日付 -->
+        <span id="span1" hidden></span>
+        <!-- 時間 -->
+        <span id="span2" hidden></span>
+        <!--緯度-->
+        <span id="now_latiude" hidden></span>
+        <!-- 経度 -->
+        <span id="now_longitude" hidden></span>
+        <!-- ラジアン -->
+        <span id="now_moon_position_rad" hidden></span>
+        <!-- ラジアン→角度 -->
+        <span id="now_degree" hidden></span>
+        <!-- 満ち欠け(画像表示用) -->
+        <span id="now_illumination" hidden></span>
+      </div>
+
     </div>
 
-    <!-- いるけどいらない -->
-    <div class="waste">
-      <!-- 日付 -->
-      <span id="span1" hidden></span>
-      <!-- 時間 -->
-      <span id="span2" hidden></span>
-      <!--緯度-->
-      <span id="now_latiude" hidden></span>
-      <!-- 経度 -->
-      <span id="now_longitude" hidden></span>
-      <!-- ラジアン -->
-      <span id="now_moon_position_rad" hidden></span>
-      <!-- ラジアン→角度 -->
-      <span id="now_degree" hidden></span>
-      <!-- 満ち欠け(画像表示用) -->
-      <span id="now_illumination" hidden></span>
-    </div>
+
   </main>
 
 </body>

@@ -1,16 +1,19 @@
-:root {
-    --main-text-color-white: #fffafe;
-
-}
 
 body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(-135deg, #F2B9A1, #EA6264);
-    /* background: #EEEEEE; */
+    /* background: linear-gradient(-135deg, #F2B9A1, #EA6264); */
+    background: #FFFFFF;
     font-family: arial, sans-serif;
     letter-spacing: normal;
+}
+
+.mainDiv {
+    display: flex;
+    width: 100vw;
+    padding-top: 100px;
+    justify-content: center;
 }
 
 .content {
@@ -41,12 +44,7 @@ body {
     }
 }
 
-.mainDiv {
-    display: flex;
-    width: 100vw;
-    padding-top: 100px;
-    justify-content: center;
-}
+
 
 .title {
     display: flex;
@@ -55,14 +53,14 @@ body {
     /* border-top-left-radius: 7px;
     border-top-right-radius: 7px; */
     width: 100%;
-    background-color: #41b5f9;
+    background-color: #005FFF;
 }
 
 .title_text {
     font-weight: normal;
     font-size: 2rem;
     white-space: nowrap;
-    color: var(--main-text-color-white);
+    color: #fffafe;
 }
 
 /* もしくはのところ↓ */
