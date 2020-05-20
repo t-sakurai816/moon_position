@@ -4,9 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=360,initial-scale=1">
+  <link rel="shortcut icon" href="moon_michikake05.ico">
+  <meta property="og:url" content="https://moon.massyu.net" />
   <meta property="og:title" content="月の位置がわかる">
   <meta property="og:description" content="現在地から月の位置と満ち欠けがわかる">
-   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://moon.massyu.net/moon_michikake05.png" />
+  <meta property="og:type" content="website">
   <title>月の方角を表す</title>
   <!-- CSS -->
   <link rel="stylesheet" href="css/index.css" media="screen">
@@ -26,6 +29,20 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166953537-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166953537-1');
+  </script>
+
+
 </head>
 
 <body>
@@ -36,6 +53,8 @@
           <h3 class="title_text">月の位置わかーる</h3>
         </header>
       </div>
+
+      <!-- ElasticBeanstalkとGitHubを使ってこのアプリは運営しています。 -->
 
       <div class="content_body">
 
@@ -52,7 +71,7 @@
               <!--日付を入力-->
               <input type="date" name="dateInput">
               <!--時間を入力-->
-              <input type="time" name="timeInput">
+              <input type="time" name="timeInput" step="600">
             </form>
           </div>
           <button type="button" class="btn btn-primary btn-lg active" onclick="anyPosition();">↑の日時で出力</button>
@@ -82,7 +101,7 @@
           <h4>補足</h4>
           <p>位置情報を外部に送信したり、製作者が位置情報を取得することはありません。</p>
           <p>月のイラストはだいたいの目安としてご覧ください。</p>
-          <p>なにかありましたらTwitterへ！ -><a href ="https://twitter.com/sakupon816" target="_blank">@sakupon816</a></a></p>
+          <p>なにかありましたらTwitterへ！ -><a href="https://twitter.com/sakupon816" target="_blank">@sakupon816</a></a></p>
           <p>メールでもどうぞ -> <a href="mailto:t.sakurai816@gmail.com">メールを開く</a></p>
         </div>
 
