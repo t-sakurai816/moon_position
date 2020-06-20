@@ -127,3 +127,9 @@ body {
 	border-style: dashed;
 	border-color: #BBBBBB;
 }
+
+#container {
+  margin: 20px;
+  width: 400px;
+  height: 8px;
+}

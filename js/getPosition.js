@@ -35,8 +35,8 @@ function getPosition() {
 
 
       //東西南北で
-      var dname = ["北","北北東","北東", "東北東", "東", "東南東", "南東", "南南東", "南", "南南西", "南西", "西南西", "西", "西北西", "北西", "北北西", "北"];
-      var dindex = Math.round(direction / 22.5 )
+      var dname = ["北", "北北東", "北東", "東北東", "東", "東南東", "南東", "南南東", "南", "南南西", "南西", "西南西", "西", "西北西", "北西", "北北西", "北"];
+      var dindex = Math.round(direction / 22.5)
       var azimuth = dname[dindex];
       document.getElementById("now_azimuth").innerHTML = azimuth;
 
