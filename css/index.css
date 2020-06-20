@@ -122,6 +122,17 @@ body {
   margin-bottom: 20px;
 }
 
+.github_logo{
+  text-align:center;
+}
+
+.github_logo img{
+  height: 40px;
+  width: auto;
+}
+
+
+
 .cp_hr02 {
 	border-width: 1px 0 0 0;
 	border-style: dashed;
