@@ -39,9 +39,10 @@ function anyPosition() {
       var degree = moon_position_rad.azimuth * (180 / Math.PI);
       document.getElementById("now_degree").innerHTML = degree;
 
-      // 方角
+      // 方角の角度
       var direction = 180 + degree;
-      document.getElementById("now_direction").innerHTML = direction;
+      var direction_round = Math.round(direction);//四捨五入
+      document.getElementById("now_direction").innerHTML = direction_round;
 
       //東西南北で
       var dname = ["北","北北東","北東", "東北東", "東", "東南東", "南東", "南南東", "南", "南南西", "南西", "西南西", "西", "西北西", "北西", "北北西", "北"];
@@ -49,7 +50,7 @@ function anyPosition() {
       var azimuth = dname[dindex];
       document.getElementById("now_azimuth").innerHTML = azimuth;
 
-      //月の満ち欠け
+      //月の満ち欠け(画像表示用)
       var illumination_phase = SunCalc.getMoonIllumination(new Date(userSelect.replace(/-/g,"/")))
       var tmp_illumination_phase = illumination_phase.phase;
       // document.getElementById("now_illumination").innerHTML = tmp_illumination_phase;
@@ -57,7 +58,8 @@ function anyPosition() {
       // 月の満ち欠け(出力用)
       var illumination_fraction = SunCalc.getMoonIllumination(new Date());
       var tmp_illumination_fraction = illumination_fraction.fraction;
-      document.getElementById("now_illumination_fraction").innerHTML = tmp_illumination_fraction;
+      var tmp_illumination_fraction_fllor = Math.floor(tmp_illumination_fraction * Math.pow(10, 5)) / Math.pow(10, 5);//小数点第5位
+      document.getElementById("now_illumination_fraction").innerHTML = tmp_illumination_fraction_fllor;
 
 
       // 月の画像を表示 if地獄を直したい
