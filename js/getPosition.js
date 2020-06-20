@@ -49,7 +49,7 @@ function getPosition() {
       // 月の満ち欠け(出力用)
       var illumination_fraction = SunCalc.getMoonIllumination(new Date());
       var tmp_illumination_fraction = illumination_fraction.fraction;
-      var tmp_illumination_fraction_fllor = Math.fllor(tmp_illumination_fraction * Math.pow(10, 5)) / Math.pow(10, 5);//小数点第5位
+      var tmp_illumination_fraction_fllor = Math.floor(tmp_illumination_fraction * Math.pow(10, 5)) / Math.pow(10, 5);//小数点第5位
       document.getElementById("now_illumination_fraction").innerHTML = tmp_illumination_fraction_fllor;
 
 
